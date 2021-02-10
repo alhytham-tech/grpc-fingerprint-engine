@@ -53,7 +53,7 @@ sudo apt install python3-pip
 sudo apt install python3-venv
 
 # globally install python grpc and grpc-tools
-sudo python3 -m pip install grpcio grpcio-tools
+sudo python3 -m pip install -r requirements.txt
 
 # move into client code directory
 cd secureng-fingerprint/src/python
@@ -66,7 +66,7 @@ chmod u+x grpcenv/bin/activate
 source grpcenv/bin/activate
 
 # install python grpc tools in the new environment
-python -m pip install grpcio grpcio-tools
+python -m pip install -r requirements.txt
 
 # [optional step] regenerate the client code
 python -m grpc_tools.protoc -I../protos --python_out=. --grpc_python_out=. ../protos/fingerprint.proto
