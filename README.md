@@ -8,7 +8,7 @@ How to Use
 The project basically provides a server which is just a grpc c++ wrapper to enroll, identify and verify FMDs and sample client side code that communicate with the server in any language. So the idea is you may want to write your code in a language of your choice, say maybe python, or js using the DigitalPersona fingerprint device, but the SDK is limited to C, C++ or Java, the solution is this project, you can generate the client code which receives fingerprint data (FMD) from a user (e.g from the browser), you can then use your generated code to send the data to the server which can perform enrollment, verification or identification. To start using:
 
 ## 1 - Install DigitalPersona Linux SDK
-
+[Download the SDK]()
 ## 2 - Setup the FingerPrint Engine Server
 To setup the fingerprint engine server you can either build from source or use our generated binaries (we assume a linux server)
 
