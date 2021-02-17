@@ -9,6 +9,22 @@ The project basically provides a server which is just a grpc c++ wrapper to enro
 
 ## 1 - Install DigitalPersona Linux SDK
 [Download the SDK](https://github.com/Bexils/grpc-fingerprint-engine/releases)
+
+You need ```root``` privilege to install the SDK
+
+```bash
+
+# create directory for sdk
+mkdir digitalPersona && cd digitalPersona
+
+# decompress the downloaded tar archive
+tar -xvf ../digitalPersona-linux-sdk-2.2.3.tar
+
+# install the sdk
+sudo ./install
+
+```
+
 ## 2 - Setup the FingerPrint Engine Server
 To setup the fingerprint engine server you can either build from source or use our generated binaries (we assume a linux server)
 
