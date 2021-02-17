@@ -1,14 +1,14 @@
 grpc-fingerprint-engine
 =========================
 
-grpc-fingerprint-engine is a gRPC implementation of the DigitalPersona Fingerprint engine, to allow for usage with any programming language (php, python, js, c++ e.t.c). The assumption is that you have setup the fingerprint device on the client side and you are able to obtain FMDs (Fingerprint Minutiae Data) but need a flexible way to work with the data without the programming language limitations of the DigitalPersona SDK, if you haven't setup the device on the client side you can check [here](https://github.com/Ethic41/FingerPrint).
+grpc-fingerprint-engine is a Linux gRPC implementation of the DigitalPersona Fingerprint engine, to allow for usage with any programming language (php, python, js, c++ e.t.c). The assumption is that you have setup the fingerprint device on the client side and you are able to obtain FMDs (Fingerprint Minutiae Data) but need a flexible way to work with the data without the programming language limitations of the DigitalPersona SDK, if you haven't setup the device on the client side you can check [here](https://github.com/Ethic41/FingerPrint).
 
 How to Use
 ===============
 The project basically provides a server which is just a grpc c++ wrapper to enroll, identify and verify FMDs and sample client side code that communicate with the server in any language. So the idea is you may want to write your code in a language of your choice, say maybe python, or js using the DigitalPersona fingerprint device, but the SDK is limited to C, C++ or Java, the solution is this project, you can generate the client code which receives fingerprint data (FMD) from a user (e.g from the browser), you can then use your generated code to send the data to the server which can perform enrollment, verification or identification. To start using:
 
 ## 1 - Install DigitalPersona Linux SDK
-[Download the SDK]()
+[Download the SDK](https://github.com/Bexils/grpc-fingerprint-engine/releases)
 ## 2 - Setup the FingerPrint Engine Server
 To setup the fingerprint engine server you can either build from source or use our generated binaries (we assume a linux server)
 
@@ -37,7 +37,7 @@ make -j
 
 ```
 ## Use Generated Binaries
-Simply [Download]() and start the server
+Simply [Download](https://github.com/Bexils/grpc-fingerprint-engine/releases) and start the server
 
 # 
 
