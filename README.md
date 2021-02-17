@@ -1,7 +1,7 @@
-secureng-fingerprint
+grpc-fingerprint-engine
 =========================
 
-secureng-fingerprint is a gRPC implementation of the DigitalPersona Fingerprint engine, to allow for usage with any programming language (php, python, js, c++ e.t.c). The assumption is that you have setup the fingerprint device on the client side and you are able to obtain FMDs (Fingerprint Minutiae Data) but need a flexible way to work with the data without the programming language limitations of the DigitalPersona SDK, if you haven't setup the device on the client side you can check [here](https://github.com/Ethic41/FingerPrint).
+grpc-fingerprint-engine is a gRPC implementation of the DigitalPersona Fingerprint engine, to allow for usage with any programming language (php, python, js, c++ e.t.c). The assumption is that you have setup the fingerprint device on the client side and you are able to obtain FMDs (Fingerprint Minutiae Data) but need a flexible way to work with the data without the programming language limitations of the DigitalPersona SDK, if you haven't setup the device on the client side you can check [here](https://github.com/Ethic41/FingerPrint).
 
 How to Use
 ===============
