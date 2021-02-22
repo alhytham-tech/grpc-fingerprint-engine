@@ -4,3 +4,4 @@
 .sublime
 build
 grpcenv
+vendor

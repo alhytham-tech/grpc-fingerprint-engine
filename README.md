@@ -28,16 +28,21 @@ sudo ./install
 ## 2 - Setup the FingerPrint Engine Server
 To setup the fingerprint engine server you can either build from source or use our generated binaries (we assume a linux server)
 
+## Use Generated Binaries
+Simply [Download](https://github.com/Bexils/grpc-fingerprint-engine/releases) and start the server
+
+### **OR**
+
 ## Build from Source
 [Setup & Install gRPC globally](https://grpc.io/docs/languages/cpp/quickstart/#setup), then 
  
 ```bash
 
 # clone this repository
-git clone https://github.com/Ethic41/secureng-fingerprint
+git clone https://github.com/Bexils/grpc-fingerprint-engine
 
 # move into server directory
-cd secureng-fingerprint/src/cpp/
+cd grpc-fingerprint-engine/src/cpp/
 
 # create and move into the server build directory
 mkdir build && cd build
@@ -52,15 +57,13 @@ make -j
 ./fingerprint_server
 
 ```
-## Use Generated Binaries
-Simply [Download](https://github.com/Bexils/grpc-fingerprint-engine/releases) and start the server
 
 # 
 
-## Setup the Server Clients
+# Setup the Server Clients
 This is basically the heart of the project, the ability to generate code in the language of your choosing that can communicate with the Fingerprint Engine Server. You can generate client code from the ***.proto*** file(s) [here]() for any language of your choosing if it's supported by gRPC.
 
-## Setting up Python client code
+## Setting up Python client code (optional)
 We assume ***Python 3.7*** other versions should work, but haven't been tested
 ```bash
 
@@ -74,7 +77,7 @@ sudo apt install python3-venv
 sudo python3 -m pip install -r requirements.txt
 
 # move into client code directory
-cd secureng-fingerprint/src/python
+cd grpc-fingerprint-engine/src/python
 
 # create a virtual environment (named grpcenv)
 python3 -m venv grpcenv
@@ -90,7 +93,53 @@ python -m pip install -r requirements.txt
 python -m grpc_tools.protoc -I../protos --python_out=. --grpc_python_out=. ../protos/fingerprint.proto
 
 # add the url_base64encoded fmds into the fingerprint_client.py file as required
-# then run the client
+# PS: the fingerprint_server should already be running
+# then run the client (enjoy :)
 python fingerprint_client.py
+
+```
+
+## Setting up PHP Client Code (optional)
+We assume PHP 7 or later, previous versions are untested
+```bash
+
+# setup php and other prerequsites
+sudo apt install php7.3 php7.3-dev php-pear phpunit
+
+# install composer
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+
+# install phpunit
+wget -O phpunit https://phar.phpunit.de/phpunit-5.phar
+chmod +x phpunit
+sudo mv phpunit /usr/bin/phpunit
+
+# install zlib
+sudo apt install libz-dev
+
+# install grpc
+sudo pecl install grpc
+
+# install protobuf
+sudo pecl install protobuf
+
+# in your php.ini file add the following
+# under the extension section
+extension=grpc
+extension=protobuf
+
+# regenerate php client code (optional)
+cd grpc-fingerprint-engine/src/php
+protoc --proto_path=../protos --php_out=. --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_php_plugin` ../protos/fingerprint.proto
+
+# install packages
+composer install
+
+# add the url_base64encoded fmds into the fingerprint_client.php
+# file as required (check the file)
+# PS: the fingerprint_server should already be running
+# then run the client (enjoy :)
+php fingerprint_client.php
 
 ```
