@@ -6,7 +6,6 @@
 # @Link    : thelightfinder.blogspot.com
 # @Version : 0.0.1
 
-from typing import List
 import grpc
 
 import fingerprint_pb2 as fp_pb2
@@ -14,9 +13,9 @@ import fingerprint_pb2_grpc as fp_pb2_grpc
 from fingerprint_pb2 import (EnrolledFMD, EnrollmentRequest, VerificationRequest, VerificationResponse, PreEnrolledFMD,)
 
 """
-usage notes: add url base64 encoded fmds for testing purpose
-in real code you will be getting the fmds from some source
-which could 
+usage notes: add url base64 encoded fmds for testing purpose below,
+but in real code you will be getting the fmds from some source
+which could be the frontend of your webapp or any source
 """
 fmd1 = ""  # todo: add a pre_enrolled fmd1 for a finger
 fmd2 = ""  # todo: add another pre_enrolled for the same finger
