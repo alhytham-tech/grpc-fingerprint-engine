@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <cstdlib>
 
 // DigitalPersona Includes
 #include "dpfj.h"
@@ -26,6 +27,8 @@
 #include "fingerprint.grpc.pb.h"
 
 #define MY_MAX_FMD_SIZE 2000
+#define MAX_PORT "65535"
+#define DEFAULT_PORT "4134" // DMD :)
 
 using grpc::Server;
 using grpc::ServerBuilder;
@@ -45,6 +48,7 @@ using fingerprint::FingerPrint;
 using std::vector;
 using std::string;
 using std::cout;
+using std::getenv;
 using std::endl;
 using std::unique_ptr;
 using std::map;
@@ -245,7 +249,16 @@ class FingerPrintImpl final : public FingerPrint::Service {
 
 
 void RunServer() {
-    string server_address("0.0.0.0:4134");
+    const char * port = getenv("PORT");
+    string  server_address("0.0.0.0:");
+    if (port && strlen(port) <= strlen(MAX_PORT)) {
+        string user_port(port);
+        server_address.append(port);
+    }
+    else {
+        server_address.append(DEFAULT_PORT);
+    }
+
     FingerPrintImpl service;
 
     ServerBuilder builder;
@@ -255,7 +268,7 @@ void RunServer() {
     unique_ptr<Server> server(builder.BuildAndStart());
     cout << "Server started, listening on " << server_address << endl;
     server->Wait();
-}
+}   
 
 int main() {
     RunServer();
