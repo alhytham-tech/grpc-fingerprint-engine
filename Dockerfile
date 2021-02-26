@@ -7,7 +7,7 @@
 FROM dahirmuhammaddahir/bexils_grpc:1.0.0 as stage1
 
 WORKDIR /temp
-ENV VERSION="v1.0.0"
+ENV VERSION="v1.1.0"
 # the order of the commands is
 RUN apt update && apt install -y wget && \
     wget https://github.com/Bexils/grpc-fingerprint-engine/releases/download/${VERSION}/libdpfj.tar && \
